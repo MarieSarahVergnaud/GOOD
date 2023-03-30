@@ -1,12 +1,14 @@
 import './App.css'
 import Title from './components/Title'
 import PokemonCard from "./components/PokemonCard"
+import SayHello from './components/SayHello'
 
 
 function App() {
 
 
   return (
+    
     <div className="app">
 
       <div className="header"> {/* -- HEADER START-- */}
@@ -22,6 +24,7 @@ function App() {
       </div> {/* -- HEADER END -- */}
    
       <PokemonCard />
+      <SayHello />
       
     </div>
   )
