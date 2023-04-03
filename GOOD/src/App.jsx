@@ -1,33 +1,65 @@
 import './App.css'
-import Title from './components/Title'
 import PokemonCard from "./components/PokemonCard"
-import SayHello from './components/SayHello'
-
+import { useEffect, useState } from 'react';
+import NavBar from './components/NavBar';
+import Logo from './components/Logo';
 
 function App() {
+ 
+  const [pokemonIndex, setPokemonIndex] = useState(0);
 
 
+  const pokemonList = [{
+    name: "bulbasaur",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+  },
+  {
+    name: "charmander",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+  },
+  {
+    name: "squirtle",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+  },
+  {
+    name: "pikachu",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+  },
+  {
+    name: "mew",
+  },
+  ];
+  
+
+
+  useEffect(
+    () => {
+      window.alert("hello pokemon trainer :) ");
+      (pokemonList [pokemonIndex].name ==="pikachu")? alert ("pika pika !"): "";
+    },
+   [pokemonIndex]  
+  );
+ 
+  
   return (
-    
+
     <div className="app">
+      <div className="header">
 
-      <div className="header"> {/* -- HEADER START-- */}
-        <a href="https://www.pokemon.com/fr" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" className="logo" alt="Vite logo" />
-        </a>
 
-        <Title />
-        
-        <a href="https://reactjs.org" target="_blank">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB_VruBAO391MxCTbu7IvYLRSHq-jYHN6C4g&usqp=CAU" className="logo react" alt="React logo" />
-        </a>
-      </div> {/* -- HEADER END -- */}
+       
+      <NavBar pokemonIndex={pokemonIndex} setPokemonIndex={setPokemonIndex} pokemonList={pokemonList}/>
+      <PokemonCard props = {pokemonList[pokemonIndex]} />
    
-      <PokemonCard />
-      <SayHello />
-      
-    </div>
-  )
+      <Logo />
+      </div>
+      ;
+      </div>
+  );
 }
 
-export default App
+export default App;
